@@ -1,0 +1,4 @@
+<FilesMatch "\.(jquery.min.js|bootstrap.min.js|popper.min.js|slidebars.min.js|slidebars.min.css|bootstrap.min.css)$">
+Header set Cache-Control "public, max-age=160704000"
+</FilesMatch>
+ 
