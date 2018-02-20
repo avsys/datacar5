@@ -7,9 +7,15 @@
     <cfinclude template = "../includes/head.cfm">
       <!-- Custom styles for this template -->
     <link href="../css/animate.min.css" rel="stylesheet">
-    <link href="../css/datepicker.min.css" rel="stylesheet">
     <link href="../css/transformaicons.css" rel="stylesheet">
     <link href="../css/slidebars.css" rel="stylesheet">
+    <!--- Encuestas --->
+    <link href="../css/datepicker.min.css" rel="stylesheet">
+    <!--- Admin --->
+    <link href="../../css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="../../css/select.bootstrap4.min.css" rel="stylesheet">
+    <link href="../../css/responsive.bootstrap4.min.css" rel="stylesheet">
+    
     <style>
     ul.sidebar-nav{
       padding-left: 0px;
@@ -23,9 +29,12 @@
       /* border-bottom: 0.5px solid rgba(156, 161, 166, 0.5); */
     }
     a.btn:hover{
-      background-color: rgba(255,255,255,.18) !important;
+      background-color: rgba(255,255,255,.18);
     }
     a.a-active{
+      background-color: #0099cc !important;
+    }
+    a.a-active:hover{
       background-color: #0099cc !important;
     }
     a.dropdown-toggle:focus{
@@ -128,7 +137,7 @@
             </div>
           </div>
         </nav>
-        <div class="container">
+        <div class="container" id="contenido-admin">
           <!--- Filtro --->
           <div class="row justify-content-between mt-3">
             <div class="col-lg-6">
@@ -200,17 +209,17 @@
             </a>
         </li>
         <li>
-            <a class="a-active btn" href="#"><i class="fa fa-tachometer" style="color:white;"></i> Dashboard</a>
+            <a class="a-active btn btn-menu" id="dashboard-encuesta_salida"><i class="fa fa-tachometer" style="color:white;"></i> Dashboard</a>
         </li>
         <li class="m-collapse">
-          <a class="btn dropdown-toggle dropdown-toggle-split" data-toggle="collapse" href="#agenciasCollapse" role="button" aria-expanded="false" aria-controls="agenciasCollapse">
+          <a class="btn dropdown-toggle dropdown-toggle-split btn-menu" id="agencias-agencias" data-toggle="collapse" href="#agenciasCollapse" role="button" aria-expanded="false" aria-controls="agenciasCollapse">
             <span><i class="fa fa-building-o icon-dropdown"></i> Agencias</span>
           </a>
 
           <!--- Colapso de encuestas --->
           <ul class="collapse multi-collapse" id="agenciasCollapse">
             <li>
-              <a class="btn" href="#">Usuarios</a>
+              <a class="btn btn-menu" id="agencias-usuarios">Usuarios</a>
             </li>
             <li>
               <a class="btn" href="#">Vendedores</a>
@@ -306,15 +315,21 @@
 
     <cfinclude template = "../includes/scripts.cfm">
 
+    <script async type="text/javascript" src="../js/admin.js"></script>
+    <script type="text/javascript" src="../js/slidebars.min.js"></script>
+    <script type="text/javascript" src="../js/transformaicons.min.js"></script>
+    <!--- Encuestas --->
+    <script src= "https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script>zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9","ee6b7db5b51705a13dc2339db3edaf6d"];</script>
     <script type="text/javascript" src="../js/Chart.min.js"></script>
     <script type="text/javascript" src="../js/pieceLabel.min.js"></script>
     <script type="text/javascript" src="../js/datepicker.min.js"></script>
-    <script type="text/javascript" src="../js/slidebars.min.js"></script>
-    <script async type="text/javascript" src="../js/admin.js"></script>
-    <script type="text/javascript" src="../js/transformaicons.min.js"></script>
-    <script src= "https://cdn.zingchart.com/zingchart.min.js"></script>
-    <script>zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9","ee6b7db5b51705a13dc2339db3edaf6d"];</script>
-
+    <!--- Admin --->
+    <script type="text/javascript" src="../js/datatables.min.js"></script>
+    <script type="text/javascript" src="../js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="../js/dataTables.select.min.js"></script>
+    <script type="text/javascript" src="../js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" src="../js/responsive.bootstrap4.min.js"></script>
     <script>
       var controller, resizeTimer;
       //Configuracion de graficas
@@ -414,7 +429,7 @@
 
       $(document).ready(function() {
         transformicons.add('.tcon');
-        cargar('dashboard/encuesta_salida.cfm', 0);
+        cargar('dashboard/encuesta_salida.cfm', 0,'page-content');
         // Create a new instance of Slidebars
         controller = new slidebars();
         controller.init();
@@ -472,10 +487,10 @@
         $("a.nav-tabs").click(function(e){
           $("a.nav-tabs").removeClass("active");
           $(this).addClass("active");
-          cargar('dashboard/'+$(this).attr('id')+'.cfm','slow');
+          cargar('dashboard/'+$(this).attr('id')+'.cfm','slow','page-content');
         });
 
-        function cargar(pagina,tiempo){
+        function cargar(pagina,tiempo,id){
           // $.ajax({
           //   // the location of the CFC to run
           //     url: "Dashboard/encuesta_salida.cfm"
@@ -508,17 +523,24 @@
          //     $("#page-content").html(data);
          // });
          // Animacion de fadeIn y fadeOut
-         $('#page-content').fadeOut(tiempo);
-         $("#page-content").html('<div class="w-100 h-100 text-center mt-5"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i><span class="sr-only">Cargando...</span></div>');
-         $('#page-content').fadeOut(tiempo, function(){
-           $('#page-content').load(pagina, function(){
-             $('#page-content').fadeIn(tiempo);
+         $('#'+id).fadeOut(tiempo);
+         $("#"+id).html('<div class="w-100 h-100 text-center mt-5"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i><span class="sr-only">Cargando...</span></div>');
+         $('#'+id).fadeOut(tiempo, function(){
+           $('#'+id).load(pagina, function(){
+             $('#'+id).fadeIn(tiempo);
            });
          });
 
          return false
         }
+        $(".btn-menu").click(function(e){
+          $(".a-active").removeClass("a-active");
+          $(this).addClass("a-active");
+          var dir = $(this).attr('id').split('-');
+          console.log(dir);
+          cargar(dir[0]+"/"+dir[1]+".cfm", "slow",'contenido-admin');
 
+        });
       });
     </script>
   </body>
