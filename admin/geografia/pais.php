@@ -66,7 +66,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" style="text-align:center;">
+      <div class="modal-body text-center">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-danger" id="btn_confirmar">Borrar</button>
       </div>

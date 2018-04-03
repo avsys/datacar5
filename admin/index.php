@@ -1,9 +1,9 @@
 ﻿<?php 
-session_start(); 
+// session_start(); 
 
-if(!isset($_SESSION['usuario'])){	
-	header('location: ../');
-}
+// if(!isset($_SESSION['usuario'])){	
+// 	header('location: ../');
+// }
 ?>
 <html lang="es">
 <head>
@@ -39,7 +39,13 @@ if(!isset($_SESSION['usuario'])){
               <button class="btn dropdown-toggle" type="button" id="btn-user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img class="rounded-circle" src="http://via.placeholder.com/200x200/ffffff" alt="" width="30" height="30">
                 <span class="navbar-text d-none d-md-inline-block">
-                  <?php echo $_SESSION["usuario"]["nombre"] ?>
+                  <?php if(isset($_SESSION["usuario"]["nombre"])){
+                    echo $_SESSION["usuario"]["nombre"];
+                  }
+                  else{
+                      echo "Usuario Registrado";
+                  }
+                  ?>
                 </span>
               </button>
               <div class="dropdown-menu" aria-labelledby="btn-user">
