@@ -1,115 +1,28 @@
-﻿<html lang="es">
+﻿<?php 
+// session_start(); 
+
+// if(!isset($_SESSION['usuario'])){	
+// 	header('location: ../');
+// }
+?>
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>dataCAR 5</title>
-    <cfinclude template = "../includes/head.cfm">
-      <!-- Custom styles for this template -->
+	<?php include("../includes/head.php") ?>
+      <!-- Custom styles-->
     <link href="../css/animate.min.css" rel="stylesheet">
     <link href="../css/transformaicons.css" rel="stylesheet">
-    <link href="../css/slidebars.css" rel="stylesheet">
-    <!--- Encuestas --->
+    <link href="../css/slidebars.min.css" rel="stylesheet">
+    <link href="../css/global.css" rel="stylesheet">
+    <!-- Encuestas -->
     <link href="../css/datepicker.min.css" rel="stylesheet">
-    <!--- Admin --->
-    <link href="../../css/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link href="../../css/select.bootstrap4.min.css" rel="stylesheet">
-    <link href="../../css/responsive.bootstrap4.min.css" rel="stylesheet">
-    
-    <style>
-    ul.sidebar-nav{
-      padding-left: 0px;
-    }
-    .sidebar-nav a.btn{
-      padding: 1em;
-      width: 100%;
-      text-align: left;
-      box-shadow: none;
-      border-radius: 0;
-      /* border-bottom: 0.5px solid rgba(156, 161, 166, 0.5); */
-    }
-    a.btn:hover{
-      background-color: rgba(255,255,255,.18);
-    }
-    a.a-active{
-      background-color: #0099cc !important;
-    }
-    a.a-active:hover{
-      background-color: #0099cc !important;
-    }
-    a.dropdown-toggle:focus{
-      background-color: rgba(0,153,204,0.3) !important;
-    }
-    ul.collapse, .collapsing{
-      background: #32373c;
-      list-style: none;
-      padding-left: 0px;
-    }
-    ul.collapse .btn{
-      padding-left: 50px;
-    }
-    ul.collapsing .btn{
-      padding-left: 50px;
-    }
-    .panel a {
-      text-decoration: none;
-    }
-    ul.sidebar-nav .dropdown-toggle::after{
-      float: right;
-      margin-top: 0.5em;
-    }
-    .navbar .dropdown-toggle{
-      background: transparent;
-      color: #fff;
-    }
-    .navbar .dropdown-item:hover{
-      /* background-color: rgba(0,0,0,.09); */
-    }
-    .estadistica{
-      font-size: 4rem;
-      font-weight: 400;
-      line-height: 1em;
-      color: #1b1c1d;
-      text-transform: uppercase;
-      text-align: center;
-    }
-    .list-group-item .text-muted{
-      margin-bottom: 0px;
-      font-size: 10px;
-    }
-    .navbar-nav .dropdown-menu{
-      position: absolute;
-    }
-    .btn-pdf{
-      height: 38px;
-    }
-    #btn-calendar{
-      height: 38px;
-    }
-
-    #SideNav, .navbar{
-      background: #23282d;
-      color: #fff;
-    }
-    .navbar{
-      padding: 1px;
-    }
-
-    #SideNav a {
-      color: #fff;
-      /* transition: width 0.5s;
-      transition-delay: 0.5s; */
-    }
-    .sidebar-brand{
-      background:#CC0000;
-    }
-    .icon-dropdown{
-      color: white;
-    }
-    [canvas=container]{
-      overflow-y: overlay;
-    }
-  </style>
+    <!-- Admin -->
+    <link href="../css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="../css/select.bootstrap4.min.css" rel="stylesheet">
+    <link href="../css/responsive.bootstrap4.min.css" rel="stylesheet">    
   </head>
 <body>
   <div canvas="container">
@@ -126,19 +39,26 @@
               <button class="btn dropdown-toggle" type="button" id="btn-user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img class="rounded-circle" src="http://via.placeholder.com/200x200/ffffff" alt="" width="30" height="30">
                 <span class="navbar-text d-none d-md-inline-block">
-                  Usuario Registrado
+                  <?php 
+                  if(isset($_SESSION["usuario"])){
+                    echo $_SESSION["usuario"]["nombre"];
+                  }
+                  else{
+                    echo "Usuario Registrado";
+                  }
+                  ?>
                 </span>
               </button>
               <div class="dropdown-menu" aria-labelledby="btn-user">
                 <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Perfil</a>
                 <a class="dropdown-item" href="#"><i class="fa fa-question"></i> Ayuda</a>
-                <a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i> Salir</a>
+                <a class="dropdown-item" href="../?logout=1"><i class="fa fa-sign-out"></i> Salir</a>
               </div>
             </div>
           </div>
         </nav>
         <div class="container" id="contenido-admin">
-          <!--- Filtro --->
+          <!-- Filtro -->
           <div class="row justify-content-between mt-3">
             <div class="col-lg-6">
               <select class="form-control" name="">
@@ -182,8 +102,8 @@
               <button type="button" class="btn btn-primary mt-3" name="button">Filtrar</button>
             </div>
           </div>
-          <!--- /Filtro --->
-          <!--- Tabs --->
+          <!-- /Filtro -->
+          <!-- Tabs -->
             <ul class="nav nav-tabs mt-3">
               <li class="nav-item">
                 <a class="nav-link nav-tabs active" id="encuesta_salida" href="#">Salida</a>
@@ -216,7 +136,7 @@
             <span><i class="fa fa-building-o icon-dropdown"></i> Agencias</span>
           </a>
 
-          <!--- Colapso de encuestas --->
+          <!-- Colapso de encuestas -->
           <ul class="collapse multi-collapse" id="agenciasCollapse">
             <li>
               <a class="btn btn-menu" id="agencias-usuarios">Usuarios</a>
@@ -240,7 +160,7 @@
             <span><i class="fa fa-cogs icon-dropdown"></i> Configuración</span>
           </a>
 
-          <!--- Colapso de encuestas --->
+          <!-- Colapso de encuestas -->
           <ul class="collapse multi-collapse" id="configuracionCollapse">
             <li>
               <a class="btn" href="#">Marcas</a>
@@ -275,14 +195,14 @@
           </ul>
         </li>
         <li class="m-collapse">
-          <a class="btn dropdown-toggle" data-toggle="collapse" href="#geografiaCollapse" role="button" aria-expanded="false" aria-controls="geografiaCollapse">
+          <a class="btn dropdown-toggle dropdown-toggle-split btn-menu" id="geografia-geografia" data-toggle="collapse" href="#geografiaCollapse" role="button" aria-expanded="false" aria-controls="geografiaCollapse">
             <span><i class="fa fa-globe icon-dropdown"></i> Geografía </span>
           </a>
 
-          <!--- Colapso de encuestas --->
+          <!-- Colapso de encuestas -->
           <ul class="collapse multi-collapse" id="geografiaCollapse">
             <li>
-              <a class="btn" href="#">Pais</a>
+              <a class="btn btn-menu" id="geografia-pais">Pais</a>
             </li>
             <li>
               <a class="btn" href="#">Estado</a>
@@ -297,7 +217,7 @@
             <span><i class="fa fa-bullhorn icon-dropdown"></i> Medios </span>
           </a>
 
-          <!--- Colapso de encuestas --->
+          <!-- Colapso de encuestas -->
           <ul class="collapse multi-collapse" id="mediosCollapse">
             <li>
               <a class="btn" href="#">Radio</a>
@@ -312,24 +232,28 @@
         </li>
     </ul>
   </div>
-
-    <cfinclude template = "../includes/scripts.cfm">
+	<?php include("../includes/scripts.php");?>
+   
 
     <script async type="text/javascript" src="../js/admin.js"></script>
     <script type="text/javascript" src="../js/slidebars.min.js"></script>
     <script type="text/javascript" src="../js/transformaicons.min.js"></script>
-    <!--- Encuestas --->
+    <!-- Encuestas -->
     <script src= "https://cdn.zingchart.com/zingchart.min.js"></script>
     <script>zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9","ee6b7db5b51705a13dc2339db3edaf6d"];</script>
     <script type="text/javascript" src="../js/Chart.min.js"></script>
     <script type="text/javascript" src="../js/pieceLabel.min.js"></script>
     <script type="text/javascript" src="../js/datepicker.min.js"></script>
-    <!--- Admin --->
+    <!-- Admin -->
     <script type="text/javascript" src="../js/datatables.min.js"></script>
     <script type="text/javascript" src="../js/dataTables.bootstrap4.min.js"></script>
     <script type="text/javascript" src="../js/dataTables.select.min.js"></script>
     <script type="text/javascript" src="../js/dataTables.responsive.min.js"></script>
     <script type="text/javascript" src="../js/responsive.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
+    <!-- Config Paginas -->
+    <script async type="text/javascript" src="../js/config_paginas.js"></script>
+
     <script>
       var controller, resizeTimer;
       //Configuracion de graficas
@@ -429,7 +353,7 @@
 
       $(document).ready(function() {
         transformicons.add('.tcon');
-        cargar('dashboard/encuesta_salida.cfm', 0,'page-content');
+        cargar('dashboard/encuesta_salida.php', 0,'page-content');
         // Create a new instance of Slidebars
         controller = new slidebars();
         controller.init();
@@ -487,13 +411,13 @@
         $("a.nav-tabs").click(function(e){
           $("a.nav-tabs").removeClass("active");
           $(this).addClass("active");
-          cargar('dashboard/'+$(this).attr('id')+'.cfm','slow','page-content');
+          cargar('dashboard/'+$(this).attr('id')+'.php','slow','page-content');
         });
 
         function cargar(pagina,tiempo,id){
           // $.ajax({
           //   // the location of the CFC to run
-          //     url: "Dashboard/encuesta_salida.cfm"
+          //     url: "Dashboard/encuesta_salida.php"
           //   // send a GET HTTP operation
           //   , type: "post"
           //   // tell jQuery we're getting JSON back
@@ -523,11 +447,22 @@
          //     $("#page-content").html(data);
          // });
          // Animacion de fadeIn y fadeOut
+         $('.modal').remove();
          $('#'+id).fadeOut(tiempo);
          $("#"+id).html('<div class="w-100 h-100 text-center mt-5"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i><span class="sr-only">Cargando...</span></div>');
          $('#'+id).fadeOut(tiempo, function(){
            $('#'+id).load(pagina, function(){
              $('#'+id).fadeIn(tiempo);
+               //Hacer que el modal se vaya al final del body para que aparezca de forma correcta
+                $('.modal').appendTo(document.body);
+                //Evitar enter en Form
+                $('form').on('keyup keypress', function(e) {
+                  var keyCode = e.keyCode || e.which;
+                  if (keyCode === 13) { 
+                    e.preventDefault();
+                    return false;
+                  }
+                });      
            });
          });
 
@@ -538,10 +473,10 @@
           $(this).addClass("a-active");
           var dir = $(this).attr('id').split('-');
           console.log(dir);
-          cargar(dir[0]+"/"+dir[1]+".cfm", "slow",'contenido-admin');
+          cargar(dir[0]+"/"+dir[1]+".php", "slow",'contenido-admin');
 
         });
       });
-    </script>
+    </script>    
   </body>
 </html>
