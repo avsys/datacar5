@@ -11,8 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>dataCAR 5</title>
-	<?php include("../includes/head.php") ?>
-      <!-- Custom styles-->
+	  <?php include("../includes/head.php") ?>
+      <!-- Sitio -->
     <link href="../css/animate.min.css" rel="stylesheet">
     <link href="../css/transformaicons.css" rel="stylesheet">
     <link href="../css/slidebars.min.css" rel="stylesheet">
@@ -136,7 +136,7 @@
             <span><i class="fa fa-building-o icon-dropdown"></i> Agencias</span>
           </a>
 
-          <!-- Colapso de encuestas -->
+          <!-- Colapso de Agencias -->
           <ul class="collapse multi-collapse" id="agenciasCollapse">
             <li>
               <a class="btn btn-menu" id="agencias-usuarios">Usuarios</a>
@@ -160,7 +160,7 @@
             <span><i class="fa fa-cogs icon-dropdown"></i> Configuración</span>
           </a>
 
-          <!-- Colapso de encuestas -->
+          <!-- Colapso de Configuracion -->
           <ul class="collapse multi-collapse" id="configuracionCollapse">
             <li>
               <a class="btn" href="#">Marcas</a>
@@ -199,7 +199,7 @@
             <span><i class="fa fa-globe icon-dropdown"></i> Geografía </span>
           </a>
 
-          <!-- Colapso de encuestas -->
+          <!-- Colapso de Geografia -->
           <ul class="collapse multi-collapse" id="geografiaCollapse">
             <li>
               <a class="btn btn-menu" id="geografia-pais">Pais</a>
@@ -217,7 +217,7 @@
             <span><i class="fa fa-bullhorn icon-dropdown"></i> Medios </span>
           </a>
 
-          <!-- Colapso de encuestas -->
+          <!-- Colapso de Medios -->
           <ul class="collapse multi-collapse" id="mediosCollapse">
             <li>
               <a class="btn" href="#">Radio</a>
@@ -250,7 +250,7 @@
     <script type="text/javascript" src="../js/dataTables.select.min.js"></script>
     <script type="text/javascript" src="../js/dataTables.responsive.min.js"></script>
     <script type="text/javascript" src="../js/responsive.bootstrap4.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
+    <script type="text/javascript" src="../js/jquery.validate.min.js"></script>
     <!-- Config Paginas -->
     <script async type="text/javascript" src="../js/config_paginas.js"></script>
 
