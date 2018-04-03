@@ -1,0 +1,118 @@
+/*----------- Index -----------*/
+ul.sidebar-nav{
+    padding-left: 0px;
+  }
+  .sidebar-nav a.btn{
+    padding: 1em;
+    width: 100%;
+    text-align: left;
+    box-shadow: none;
+    border-radius: 0;
+    /* border-bottom: 0.5px solid rgba(156, 161, 166, 0.5); */
+  }
+  a.btn:hover{
+    background-color: rgba(255,255,255,.18);
+  }
+  a.a-active{
+    background-color: #0099cc !important;
+  }
+  a.a-active:hover{
+    background-color: #0099cc !important;
+  }
+  a.dropdown-toggle:focus{
+    background-color: rgba(0,153,204,0.3) !important;
+  }
+  ul.collapse, .collapsing{
+    background: #32373c;
+    list-style: none;
+    padding-left: 0px;
+  }
+  ul.collapse .btn{
+    padding-left: 50px;
+  }
+  ul.collapsing .btn{
+    padding-left: 50px;
+  }
+  .panel a {
+    text-decoration: none;
+  }
+  ul.sidebar-nav .dropdown-toggle::after{
+    float: right;
+    margin-top: 0.5em;
+  }
+  .navbar .dropdown-toggle{
+    background: transparent;
+    color: #fff;
+  }
+  .navbar .dropdown-item:hover{
+    /* background-color: rgba(0,0,0,.09); */
+  }
+  .estadistica{
+    font-size: 4rem;
+    font-weight: 400;
+    line-height: 1em;
+    color: #1b1c1d;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .list-group-item .text-muted{
+    margin-bottom: 0px;
+    font-size: 10px;
+  }
+  .navbar-nav .dropdown-menu{
+    position: absolute;
+  }
+  .btn-pdf{
+    height: 38px;
+  }
+  #btn-calendar{
+    height: 38px;
+  }
+
+  #SideNav, .navbar{
+    background: #23282d;
+    color: #fff;
+  }
+  .navbar{
+    padding: 1px;
+  }
+
+  #SideNav a {
+    color: #fff;
+    /* transition: width 0.5s;
+    transition-delay: 0.5s; */
+  }
+  .sidebar-brand{
+    background:#CC0000;
+  }
+  .icon-dropdown{
+    color: white;
+  }
+  [canvas=container]{
+    overflow-y: overlay;
+  }
+
+/*----------- Paginas -----------*/
+div.table-responsive{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+table tbody tr:hover:not(.selected){
+  background: #ECEFF1 !important;
+}
+div.table-responsive>div.dataTables_wrapper>div.row:first-child{
+  margin-top: 3px;
+}
+.stripe1 {
+    background-color: #E8E8E8;
+}
+.stripe2 {
+    background-color: #EEEEEE;
+    border-bottom: solid #EEEEEE;
+}
+#btn_borrar{
+  height: 38px;
+}
+.fa-pencil{
+  cursor : pointer;
+}
