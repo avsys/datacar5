@@ -6,7 +6,7 @@
 <div class="row mt-3">
   <div class="col">
     <button type="button" class="btn btn-outline-primary" name="button" data-toggle="modal" data-target="#paisModal" id="btn_agregar">Agregar</button>
-    <button type="button" class="btn btn-outline-danger disabled" name="button" id="btn_borrar">
+    <button type="button" class="btn btn-outline-danger disabled" name="button" id="btn_borrar" disabled>
       <i class="fa fa-trash"></i>
     </button>
   </div>
@@ -82,7 +82,10 @@
   var configV = Object.assign(configValidator,{      
   rules: {
     paisNombre: {
-      required: true
+      required: true,
+      normalizer: function(valor) {
+        return $.trim(valor);
+      }
     }
   }
   });
@@ -143,9 +146,9 @@
 
   function activar_botones(count) {
     if (count > 0) {
-      $('#btn_borrar').removeClass('disabled');
+      $('#btn_borrar').removeClass('disabled').prop('disabled',false);
     } else {
-      $('#btn_borrar').addClass('disabled');
+      $('#btn_borrar').addClass('disabled').prop('disabled',true);
     }
   }
 
@@ -163,7 +166,7 @@
   });
 
   $('#btn_borrar').click(function () {
-    $('#confirmarModalTitulo').html('Desea eliminar ' + table.rows({
+    $('#confirmarModalTitulo').text('Desea eliminar ' + table.rows({
       selected: true
     }).data().length + ' registro(s)');
     $('#confirmarModal').modal('show');

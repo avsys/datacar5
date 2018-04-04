@@ -228,10 +228,10 @@
             <a class="btn btn-menu" id="geografia-pais">Pais</a>
           </li>
           <li>
-            <a class="btn" href="#">Estado</a>
+            <a class="btn btn-menu" id="geografia-estado">Estado</a>
           </li>
           <li>
-            <a class="btn" href="#">Ciudad</a>
+            <a class="btn btn-menu" id="geografia-ciudad">Ciudad</a>
           </li>
         </ul>
       </li>
