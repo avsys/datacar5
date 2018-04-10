@@ -7,6 +7,7 @@
   <div class="col">
     <button type="button" class="btn btn-outline-primary" name="button" data-toggle="modal" data-target="#paisModal" id="btn_agregar">Agregar</button>
     <button type="button" class="btn btn-outline-danger disabled" name="button" id="btn_borrar" disabled>
+
       <i class="fa fa-trash"></i>
     </button>
   </div>
@@ -66,7 +67,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" style="text-align:center;">
+      <div class="modal-body text-center">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-danger" id="btn_confirmar">Borrar</button>
       </div>

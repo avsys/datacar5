@@ -6,7 +6,6 @@
 // }
 ?>
 <html lang="es">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -140,6 +139,7 @@
 
   <div off-canvas="main-menu left shift" id="SideNav" style="margin-left: -255px; display: block; transition-duration: 300ms; transform: translate(255px, 0px);">
     <ul class="sidebar-nav">
+
       <li class="sidebar-brand text-center">
         <a href="#" class="navbar-brand">
           <img src="../img/logo-datacar.png" alt="" width="150" height="45">
