@@ -4,11 +4,6 @@ var url_a = '';
 var configDataTables = {
     responsive: true,
     autoWidth: true,
-    columnDefs: [{
-        orderable: false,
-        className: 'select-checkbox',
-        targets: 0
-    }],
     select: {
         style: 'multi',
         selector: 'td:first-child'
